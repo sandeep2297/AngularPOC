@@ -1,0 +1,63 @@
+<header>
+  <common-app-header [data]="getMsg()|async"></common-app-header>
+</header>
+<form [formGroup]="loginForm" id="loginForm">
+  <div>
+    <label>Username: </label>
+    <input placeholder="Email" type="text" formControlName="userName">
+    <span class="errorMsg"
+      *ngIf="loginForm.get('userName')?.errors && (loginForm.get('userName')?.touched || loginForm.get('userName')?.dirty)">
+      <span *ngIf="loginForm.get('userName')?.errors?.required">
+        Email is a required field
+      </span>
+      <span *ngIf="loginForm.get('userName')?.errors?.email">
+        Entered email is invalid
+      </span>
+    </span>
+  </div>
+  <div class="password">
+    <label>Password: </label>
+    <input class="inputPassword" type="password" formControlName="password">
+    <span class="errorMsg"
+      *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)">
+      <span *ngIf="loginForm.get('password')?.errors?.required">
+        Password is a required field
+      </span>
+      <span *ngIf="loginForm.get('password')?.errors?.minlength">
+        Password Length should be greater than 10
+      </span>
+      <span *ngIf="loginForm.get('password')?.errors?.weak">
+        {{loginForm.get('password')?.errors?.message}}
+      </span>
+    </span>
+  </div>
+  <div class="button">
+    <button (click)="captcha()" [disabled]="captchaDisabled()">Generate Captcha</button>
+  </div>
+  <div *ngIf="captchaValue">
+    <h4>{{captchaValue}}</h4>
+  </div>
+  <div class="password">
+    <label>Enter Captcha: </label>
+    <app-captcha formControlName="captcha" (valueChange)="receiveData($event)"></app-captcha>
+    <span class="errorMsg"
+      *ngIf="loginForm.get('captcha')?.errors && (loginForm.get('captcha')?.touched || loginForm.get('captcha')?.dirty)">
+      <span *ngIf="loginForm.get('captcha')?.errors?.required">
+        Captcha is required
+      </span>
+    </span>
+  </div>
+  <p>Form data: {{loginForm.value | json}}</p>
+  <p>Form Status: {{loginForm.status}}</p>
+  <!-- <p>Value: {{loginForm.get('captcha').value}} </p>
+  <p>Touched: {{loginForm.get('captcha').touched}} </p>
+  <p>Dirty: {{loginForm.get('captcha').dirty}} </p> -->
+  <!-- <p>Username Status: {{loginForm.get('userName')?.status}} </p> -->
+  <!-- <p>Password Status: {{loginForm.get('password')?.status}} </p> -->
+</form>
+<div class="button">
+  <button (click)="login()" [disabled]="!loginForm.get('captcha').valid">Login</button>
+</div>
+<span class="errorMsg" *ngIf="loginError">
+  Entered Captcha does not match
+</span>

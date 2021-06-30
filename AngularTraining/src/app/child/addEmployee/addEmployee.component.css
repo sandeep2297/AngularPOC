@@ -1,0 +1,28 @@
+.password {
+    margin-top: 15px;
+}
+.button {
+    margin-top: 15px;
+}
+
+.inputEmployeeId {
+    margin-left: 26px;
+}
+.inputGender {
+    margin-left: 59px;
+}
+.inputAge {
+    margin-left: 79px;
+}
+.inputCity {
+    margin-left: 78px;
+}
+.inputState {
+    margin-left: 73px;
+}
+.inputDate {
+    margin-left: 6px;
+}
+.errorMsg {
+    color: red;
+}

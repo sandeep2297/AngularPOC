@@ -1,0 +1,8 @@
+<div *ngIf="storeData">
+  <p>Store Name: {{storeData.storeName}} </p>
+  <p>Owner: {{storeData.owner}}</p>
+  <p>Phone: {{storeData.phone | phoneFormat}}</p>
+  <p>Date of Establishment: {{storeData.doe | date}}</p>
+  <p>City: {{storeData.city}}</p>
+  <p>Country: {{storeData.country}}</p>
+  </div>

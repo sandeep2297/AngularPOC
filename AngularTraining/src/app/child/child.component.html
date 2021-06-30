@@ -1,0 +1,14 @@
+<header>
+    <common-app-header [data]="getMsg()|async"></common-app-header>
+</header>
+<button routerLink="/store">Store Details</button>
+<button routerLink="/employee">Employee Details</button>
+<button routerLink="/customers">Customer Details</button>
+<button (click)="navigate()">Order Details</button>
+<button routerLink="/fibo">Fibonacci</button>
+<button routerLink="/rxjs">Rxjs Opertors</button>
+<button (click)="home()">Home</button>
+
+<div class="addEmployee">
+    <button routerLink="/addEmployee">Add Employee</button>
+</div>

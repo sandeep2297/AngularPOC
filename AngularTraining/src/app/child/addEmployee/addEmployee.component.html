@@ -1,0 +1,87 @@
+<form #employeeForm="ngForm">
+
+  <div>
+    <label>EmployeeID: </label>
+    <input class="inputEmployeeId" type="text" required name="employeeId" [(ngModel)]="employeeId">
+    <span class="errorMsg"
+      *ngIf="employeeForm.controls.employeeId?.errors && (employeeForm.controls.employeeId?.touched || employeeForm.controls.employeeId?.dirty)">
+      <span *ngIf="employeeForm.controls.employeeId?.errors?.required">
+        Employee Id is a required field
+      </span>
+    </span>
+  </div>
+
+  <div class="password">
+    <label>Employee Name: </label>
+    <input class="inputPassword" type="text" required pattern="^[a-zA-Z\s]+$" name="employeeName"
+      [(ngModel)]="employeeName">
+    <span class="errorMsg"
+      *ngIf="employeeForm.controls.employeeName?.errors && (employeeForm.controls.employeeName?.touched || employeeForm.controls.employeeName?.dirty)">
+      <span *ngIf="employeeForm.controls.employeeName?.errors?.required">
+        Employee Name is a required field
+      </span>
+      <span *ngIf="employeeForm.controls.employeeName?.errors?.pattern">
+        Employee Name is invalid
+      </span>
+    </span>
+  </div>
+
+  <div class="password">
+    <label>Gender: </label>
+    <p-dropdown class="inputGender" placeholder="Select a Gender" [options]="genders" name="gender" [(ngModel)]="selectedGender" optionLabel="gender">
+    </p-dropdown>
+  </div>
+
+  <div class="password">
+    <label>Age: </label>
+    <input class="inputAge" type="text" required pattern="^[0-9]*$" name="age" [(ngModel)]="age">
+    <span class="errorMsg"
+      *ngIf="employeeForm.controls.age?.errors && (employeeForm.controls.age?.touched || employeeForm.controls.age?.dirty)">
+      <span *ngIf="employeeForm.controls.age?.errors?.required">
+        Age is a required field
+      </span>
+      <span *ngIf="employeeForm.controls.age?.errors?.pattern">
+        Age is invalid
+      </span>
+    </span>
+  </div>
+
+  <div class="password">
+    <label>Date of Joining: </label>
+    <p-calendar class="inputDate" [readonlyInput]="true" [(ngModel)]="doj" [maxDate]="maxDateValue" [minDate]= "minDateValue" [showIcon]="true" name="doj" (onSelect)="setDate($event)"></p-calendar>
+  </div>
+
+  <div class="password">
+    <label>City: </label>
+    <input class="inputCity" type="text" required pattern="^[a-zA-Z\s]+$" name="city" [(ngModel)]="city">
+    <span class="errorMsg"
+      *ngIf="employeeForm.controls.city?.errors && (employeeForm.controls.city?.touched || employeeForm.controls.city?.dirty)">
+      <span *ngIf="employeeForm.controls.city?.errors?.required">
+        City is a required field
+      </span>
+      <span *ngIf="employeeForm.controls.city?.errors?.pattern">
+        City is invalid
+      </span>
+    </span>
+  </div>
+
+  <div class="password">
+    <label>State: </label>
+    <input class="inputState" type="text" required pattern="^[a-zA-Z\s]+$" name="state" [(ngModel)]="state">
+    <span class="errorMsg"
+      *ngIf="employeeForm.controls.state?.errors && (employeeForm.controls.state?.touched || employeeForm.controls.state?.dirty)">
+      <span *ngIf="employeeForm.controls.state?.errors?.required">
+        State is a required field
+      </span>
+      <span *ngIf="employeeForm.controls.state?.errors?.pattern">
+        State is invalid
+      </span>
+    </span>
+  </div>
+
+  <div class="button">
+    <button (click)="onSubmit(employeeForm.value)" [disabled]="!employeeForm.valid">Submit</button>
+  </div>
+  <p>Form Data: {{employeeForm.value | json}}</p>
+  <p>Form Status: {{employeeForm.status}}</p>
+</form>

@@ -1,0 +1,15 @@
+.password {
+margin-top: 15px;
+}
+.button {
+margin-top: 15px;
+}
+.inputPassword {
+    margin-left: 3px;
+}
+.errorMsg {
+    color: red;
+}
+.disableButton {
+    margin-left: 24px;
+}

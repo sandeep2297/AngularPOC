@@ -1,0 +1,8 @@
+<div *ngIf="customerData">
+<p [appRedBorder]="customerData.customerId.length >=10 ? true:false">Customer ID: {{customerData.customerId}} </p>
+<p [appRedBorder]="customerData.customerName.length >=10 ? true:false">Customer Name: {{customerData.customerName}}</p>
+<p [appRedBorder]="customerData.gender.length >=10 ? true:false">Gender: {{customerData.gender}}</p>
+<p [appRedBorder]="customerData.age.length >=10 ? true:false">Age: {{customerData.age}}</p>
+<p [appRedBorder]="customerData.city.length >=10 ? true:false">City: {{customerData.city}}</p>
+<p [appRedBorder]="customerData.state.length >=10 ? true:false">State: {{customerData.state}}</p>
+</div>
